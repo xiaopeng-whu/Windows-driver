@@ -1,0 +1,86 @@
+;
+; Process_running.inf
+;
+
+[Version]
+Signature="$WINDOWS NT$"
+Class=Sample ; TODO: edit Class
+ClassGuid={78A1C341-4539-11d3-B88D-00C04FAD5171} ; TODO: edit ClassGuid
+Provider=%ManufacturerName%
+CatalogFile=Process_running.cat
+DriverVer= ; TODO: set DriverVer in stampinf property pages
+
+[DestinationDirs]
+DefaultDestDir = 12
+Process_running_Device_CoInstaller_CopyFiles = 11
+
+; ================= Class section =====================
+
+[ClassInstall32]
+Addreg=SampleClassReg
+
+[SampleClassReg]
+HKR,,,0,%ClassName%
+HKR,,Icon,,-5
+
+[SourceDisksNames]
+1 = %DiskName%,,,""
+
+[SourceDisksFiles]
+Process_running.sys  = 1,,
+WdfCoInstaller$KMDFCOINSTALLERVERSION$.dll=1 ; make sure the number matches with SourceDisksNames
+
+;*****************************************
+; Install Section
+;*****************************************
+
+[Manufacturer]
+%ManufacturerName%=Standard,NT$ARCH$
+
+[Standard.NT$ARCH$]
+%Process_running.DeviceDesc%=Process_running_Device, Root\Process_running ; TODO: edit hw-id
+
+[Process_running_Device.NT]
+CopyFiles=Drivers_Dir
+
+[Drivers_Dir]
+Process_running.sys
+
+;-------------- Service installation
+[Process_running_Device.NT.Services]
+AddService = Process_running,%SPSVCINST_ASSOCSERVICE%, Process_running_Service_Inst
+
+; -------------- Process_running driver install sections
+[Process_running_Service_Inst]
+DisplayName    = %Process_running.SVCDESC%
+ServiceType    = 1               ; SERVICE_KERNEL_DRIVER
+StartType      = 3               ; SERVICE_DEMAND_START
+ErrorControl   = 1               ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %12%\Process_running.sys
+
+;
+;--- Process_running_Device Coinstaller installation ------
+;
+
+[Process_running_Device.NT.CoInstallers]
+AddReg=Process_running_Device_CoInstaller_AddReg
+CopyFiles=Process_running_Device_CoInstaller_CopyFiles
+
+[Process_running_Device_CoInstaller_AddReg]
+HKR,,CoInstallers32,0x00010000, "WdfCoInstaller$KMDFCOINSTALLERVERSION$.dll,WdfCoInstaller"
+
+[Process_running_Device_CoInstaller_CopyFiles]
+WdfCoInstaller$KMDFCOINSTALLERVERSION$.dll
+
+[Process_running_Device.NT.Wdf]
+KmdfService =  Process_running, Process_running_wdfsect
+[Process_running_wdfsect]
+KmdfLibraryVersion = $KMDFVERSION$
+
+[Strings]
+SPSVCINST_ASSOCSERVICE= 0x00000002
+ManufacturerName="<Your manufacturer name>" ;TODO: Replace with your manufacturer name
+ClassName="Samples" ; TODO: edit ClassName
+DiskName = "Process_running Installation Disk"
+Process_running.DeviceDesc = "Process_running Device"
+Process_running.SVCDESC = "Process_running Service"

@@ -1,0 +1,2 @@
+#TargetFrameworkVersion=v4.5:PlatformToolSet=WindowsKernelModeDriver10.0:EnableManagedIncrementalBuild=false:VCToolArchitecture=Native32Bit:WindowsTargetPlatformVersion=10.0.18362.0
+Debug|Win32|D:\file\study\操作系统\操作系统实验\Driver\Kill_proc\|

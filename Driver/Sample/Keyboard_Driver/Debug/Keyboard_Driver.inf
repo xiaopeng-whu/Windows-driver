@@ -1,0 +1,89 @@
+;
+; Keyboard_Driver.inf
+;
+
+[Version]
+Signature="$WINDOWS NT$"
+Class=Sample ; TODO: edit Class
+ClassGuid={78A1C341-4539-11d3-B88D-00C04FAD5171} ; TODO: edit ClassGuid
+Provider=%ManufacturerName%
+CatalogFile=Keyboard_Driver.cat
+DriverVer = 12/25/2019,22.8.29.592
+
+[DestinationDirs]
+DefaultDestDir = 12
+Keyboard_Driver_Device_CoInstaller_CopyFiles = 11
+
+; ================= Class section =====================
+
+[ClassInstall32]
+Addreg=SampleClassReg
+
+[SampleClassReg]
+HKR,,,0,%ClassName%
+HKR,,Icon,,-5
+
+[SourceDisksNames]
+1 = %DiskName%,,,""
+
+[SourceDisksFiles]
+Keyboard_Driver.sys  = 1,,
+;
+
+
+;*****************************************
+; Install Section
+;*****************************************
+
+[Manufacturer]
+%ManufacturerName%=Standard,NTx86
+
+[Standard.NTx86]
+%Keyboard_Driver.DeviceDesc%=Keyboard_Driver_Device, Root\Keyboard_Driver ; TODO: edit hw-id
+
+[Keyboard_Driver_Device.NT]
+CopyFiles=Drivers_Dir
+
+[Drivers_Dir]
+Keyboard_Driver.sys
+
+;-------------- Service installation
+[Keyboard_Driver_Device.NT.Services]
+AddService = Keyboard_Driver,%SPSVCINST_ASSOCSERVICE%, Keyboard_Driver_Service_Inst
+
+; -------------- Keyboard_Driver driver install sections
+[Keyboard_Driver_Service_Inst]
+DisplayName    = %Keyboard_Driver.SVCDESC%
+ServiceType    = 1               ; SERVICE_KERNEL_DRIVER
+StartType      = 3               ; SERVICE_DEMAND_START
+ErrorControl   = 1               ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %12%\Keyboard_Driver.sys
+
+;
+;--- Keyboard_Driver_Device Coinstaller installation ------
+;
+
+[Keyboard_Driver_Device.NT.CoInstallers]
+AddReg=Keyboard_Driver_Device_CoInstaller_AddReg
+CopyFiles=Keyboard_Driver_Device_CoInstaller_CopyFiles
+
+[Keyboard_Driver_Device_CoInstaller_AddReg]
+;
+
+
+[Keyboard_Driver_Device_CoInstaller_CopyFiles]
+;
+
+
+[Keyboard_Driver_Device.NT.Wdf]
+KmdfService =  Keyboard_Driver, Keyboard_Driver_wdfsect
+[Keyboard_Driver_wdfsect]
+KmdfLibraryVersion = 1.15
+
+[Strings]
+SPSVCINST_ASSOCSERVICE= 0x00000002
+ManufacturerName="<Your manufacturer name>" ;TODO: Replace with your manufacturer name
+ClassName="Samples" ; TODO: edit ClassName
+DiskName = "Keyboard_Driver Installation Disk"
+Keyboard_Driver.DeviceDesc = "Keyboard_Driver Device"
+Keyboard_Driver.SVCDESC = "Keyboard_Driver Service"

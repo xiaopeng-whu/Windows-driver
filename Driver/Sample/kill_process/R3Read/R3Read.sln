@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29403.142
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "R3Read", "R3Read\R3Read.vcxproj", "{6A1482F3-EA2B-4ABC-9810-B501ECFA0E5A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6A1482F3-EA2B-4ABC-9810-B501ECFA0E5A}.Debug|x64.ActiveCfg = Debug|x64
+		{6A1482F3-EA2B-4ABC-9810-B501ECFA0E5A}.Debug|x64.Build.0 = Debug|x64
+		{6A1482F3-EA2B-4ABC-9810-B501ECFA0E5A}.Debug|x86.ActiveCfg = Debug|Win32
+		{6A1482F3-EA2B-4ABC-9810-B501ECFA0E5A}.Debug|x86.Build.0 = Debug|Win32
+		{6A1482F3-EA2B-4ABC-9810-B501ECFA0E5A}.Release|x64.ActiveCfg = Release|x64
+		{6A1482F3-EA2B-4ABC-9810-B501ECFA0E5A}.Release|x64.Build.0 = Release|x64
+		{6A1482F3-EA2B-4ABC-9810-B501ECFA0E5A}.Release|x86.ActiveCfg = Release|Win32
+		{6A1482F3-EA2B-4ABC-9810-B501ECFA0E5A}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {908C8604-DDA9-469E-BEDC-103BF9EF7DA0}
+	EndGlobalSection
+EndGlobal

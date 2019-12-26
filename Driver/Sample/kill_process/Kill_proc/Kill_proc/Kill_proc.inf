@@ -1,0 +1,86 @@
+;
+; Kill_proc.inf
+;
+
+[Version]
+Signature="$WINDOWS NT$"
+Class=Sample ; TODO: edit Class
+ClassGuid={78A1C341-4539-11d3-B88D-00C04FAD5171} ; TODO: edit ClassGuid
+Provider=%ManufacturerName%
+CatalogFile=Kill_proc.cat
+DriverVer= ; TODO: set DriverVer in stampinf property pages
+
+[DestinationDirs]
+DefaultDestDir = 12
+Kill_proc_Device_CoInstaller_CopyFiles = 11
+
+; ================= Class section =====================
+
+[ClassInstall32]
+Addreg=SampleClassReg
+
+[SampleClassReg]
+HKR,,,0,%ClassName%
+HKR,,Icon,,-5
+
+[SourceDisksNames]
+1 = %DiskName%,,,""
+
+[SourceDisksFiles]
+Kill_proc.sys  = 1,,
+WdfCoInstaller$KMDFCOINSTALLERVERSION$.dll=1 ; make sure the number matches with SourceDisksNames
+
+;*****************************************
+; Install Section
+;*****************************************
+
+[Manufacturer]
+%ManufacturerName%=Standard,NT$ARCH$
+
+[Standard.NT$ARCH$]
+%Kill_proc.DeviceDesc%=Kill_proc_Device, Root\Kill_proc ; TODO: edit hw-id
+
+[Kill_proc_Device.NT]
+CopyFiles=Drivers_Dir
+
+[Drivers_Dir]
+Kill_proc.sys
+
+;-------------- Service installation
+[Kill_proc_Device.NT.Services]
+AddService = Kill_proc,%SPSVCINST_ASSOCSERVICE%, Kill_proc_Service_Inst
+
+; -------------- Kill_proc driver install sections
+[Kill_proc_Service_Inst]
+DisplayName    = %Kill_proc.SVCDESC%
+ServiceType    = 1               ; SERVICE_KERNEL_DRIVER
+StartType      = 3               ; SERVICE_DEMAND_START
+ErrorControl   = 1               ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %12%\Kill_proc.sys
+
+;
+;--- Kill_proc_Device Coinstaller installation ------
+;
+
+[Kill_proc_Device.NT.CoInstallers]
+AddReg=Kill_proc_Device_CoInstaller_AddReg
+CopyFiles=Kill_proc_Device_CoInstaller_CopyFiles
+
+[Kill_proc_Device_CoInstaller_AddReg]
+HKR,,CoInstallers32,0x00010000, "WdfCoInstaller$KMDFCOINSTALLERVERSION$.dll,WdfCoInstaller"
+
+[Kill_proc_Device_CoInstaller_CopyFiles]
+WdfCoInstaller$KMDFCOINSTALLERVERSION$.dll
+
+[Kill_proc_Device.NT.Wdf]
+KmdfService =  Kill_proc, Kill_proc_wdfsect
+[Kill_proc_wdfsect]
+KmdfLibraryVersion = $KMDFVERSION$
+
+[Strings]
+SPSVCINST_ASSOCSERVICE= 0x00000002
+ManufacturerName="<Your manufacturer name>" ;TODO: Replace with your manufacturer name
+ClassName="Samples" ; TODO: edit ClassName
+DiskName = "Kill_proc Installation Disk"
+Kill_proc.DeviceDesc = "Kill_proc Device"
+Kill_proc.SVCDESC = "Kill_proc Service"

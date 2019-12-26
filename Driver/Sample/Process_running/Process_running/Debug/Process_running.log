@@ -1,0 +1,23 @@
+﻿  Building 'Process_running' with toolset 'WindowsKernelModeDriver10.0' and the 'Universal' target platform.
+  Stamping Debug\Process_running.inf
+  Stamping [Version] section with DriverVer=12/23/2019,16.15.47.91
+  main.c
+  Process_running.vcxproj -> D:\file\study\操作系统\操作系统实验\Driver\Process_running\Debug\Process_running.sys
+  Done Adding Additional Store
+  Successfully signed: D:\file\study\\\Driver\Process_running\Debug\Process_running.sys
+  
+  Driver is a Universal Driver.
+  ........................
+  Signability test complete.
+  
+  Errors:
+  None
+  
+  Warnings:
+  None
+  
+  Catalog generation complete.
+  D:\file\study\操作系统\操作系统实验\Driver\Process_running\Debug\Process_running\process_running.cat
+  Done Adding Additional Store
+  Successfully signed: D:\file\study\\\Driver\Process_running\Debug\Process_running\process_running.cat
+  

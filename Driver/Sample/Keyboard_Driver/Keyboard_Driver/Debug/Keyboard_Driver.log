@@ -1,0 +1,23 @@
+﻿  Building 'Keyboard_Driver' with toolset 'WindowsKernelModeDriver10.0' and the 'Universal' target platform.
+  Stamping Debug\Keyboard_Driver.inf
+  Stamping [Version] section with DriverVer=12/25/2019,22.8.29.592
+  main.c
+  Keyboard_Driver.vcxproj -> D:\file\study\操作系统\操作系统实验\Driver\Sample\Keyboard_Driver\Debug\Keyboard_Driver.sys
+  Done Adding Additional Store
+  Successfully signed: D:\file\study\\\Driver\Sample\Keyboard_Driver\Debug\Keyboard_Driver.sys
+  
+  Driver is a Universal Driver.
+  ........................
+  Signability test complete.
+  
+  Errors:
+  None
+  
+  Warnings:
+  None
+  
+  Catalog generation complete.
+  D:\file\study\操作系统\操作系统实验\Driver\Sample\Keyboard_Driver\Debug\Keyboard_Driver\keyboard_driver.cat
+  Done Adding Additional Store
+  Successfully signed: D:\file\study\\\Driver\Sample\Keyboard_Driver\Debug\Keyboard_Driver\keyboard_driver.cat
+  

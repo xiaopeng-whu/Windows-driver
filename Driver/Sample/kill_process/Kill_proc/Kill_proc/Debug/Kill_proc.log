@@ -1,0 +1,25 @@
+﻿  Building 'Kill_proc' with toolset 'WindowsKernelModeDriver10.0' and the 'Universal' target platform.
+  Stamping Debug\Kill_proc.inf
+  Stamping [Version] section with DriverVer=12/23/2019,19.40.10.918
+  main.c
+D:\file\study\操作系统\操作系统实验\Driver\Kill_proc\Kill_proc\main.c(230,78): warning C4047: “函数”:“BOOLEAN”与“void *”的间接级别不同
+D:\file\study\操作系统\操作系统实验\Driver\Kill_proc\Kill_proc\main.c(230,78): warning C4024: “IoCreateDevice”: 形参和实参 6 的类型不同
+  Kill_proc.vcxproj -> D:\file\study\操作系统\操作系统实验\Driver\Kill_proc\Debug\Kill_proc.sys
+  Done Adding Additional Store
+  Successfully signed: D:\file\study\\\Driver\Kill_proc\Debug\Kill_proc.sys
+  
+  Driver is a Universal Driver.
+  ........................
+  Signability test complete.
+  
+  Errors:
+  None
+  
+  Warnings:
+  None
+  
+  Catalog generation complete.
+  D:\file\study\操作系统\操作系统实验\Driver\Kill_proc\Debug\Kill_proc\kill_proc.cat
+  Done Adding Additional Store
+  Successfully signed: D:\file\study\\\Driver\Kill_proc\Debug\Kill_proc\kill_proc.cat
+  
